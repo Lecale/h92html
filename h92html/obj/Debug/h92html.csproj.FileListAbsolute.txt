@@ -1,0 +1,6 @@
+c:\users\u0159027.ten\documents\visual studio 2017\Projects\h92html\h92html\bin\Debug\h92html.exe.config
+c:\users\u0159027.ten\documents\visual studio 2017\Projects\h92html\h92html\bin\Debug\h92html.exe
+c:\users\u0159027.ten\documents\visual studio 2017\Projects\h92html\h92html\bin\Debug\h92html.pdb
+c:\users\u0159027.ten\documents\visual studio 2017\Projects\h92html\h92html\obj\Debug\h92html.csprojResolveAssemblyReference.cache
+c:\users\u0159027.ten\documents\visual studio 2017\Projects\h92html\h92html\obj\Debug\h92html.exe
+c:\users\u0159027.ten\documents\visual studio 2017\Projects\h92html\h92html\obj\Debug\h92html.pdb
