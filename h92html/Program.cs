@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace h92html
 {
@@ -12,6 +9,8 @@ namespace h92html
         static void Main(string[] args)
         {
             string tmp;
+            Console.WriteLine("h92html expects a certain format for the .h9 file");
+            Console.WriteLine("so please ensure you have all column headers populated");
             Console.WriteLine("Tell me where your h9 file is");
             string h9File = Console.ReadLine();
             string htmlFile = h9File.Replace(".txt",".html").Replace(".h9", ".html");
@@ -63,11 +62,13 @@ namespace h92html
                     for (int j = 0; j < split.Length; j++)
                         if (split[j].Equals(answer))
                             remove = j;
+                    Console.WriteLine("Purging column {0}",remove);
                 }
                 for (int i = 1; i < split.Length; i++)
                 {
-                    if (i != remove) { 
-                        if (i < 4)
+                    if (i != remove) {
+                        sw.WriteLine("<th class=\"alone\">" + split[i] + "</th>");  //Ian likes this style better :p
+                        /*if (i < 4)
                             sw.WriteLine("<th class=\"left\">" + split[i] + "</th>");
                         else
                         {
@@ -75,7 +76,7 @@ namespace h92html
                                 sw.WriteLine("<th class=\"middle\">" + split[i] + "</th>");
                             else
                                 sw.WriteLine("<th class=\"right\">" + split[i] + "</th>");
-                        }
+                        }*/
                     }
                 }
                 sw.WriteLine("</tr>");
@@ -86,9 +87,9 @@ namespace h92html
                     split = ls[j].Split(new string[] { " ", "\t" }, StringSplitOptions.RemoveEmptyEntries);
                     bool toJoinName = true;
                     //concatenate the first non numeric 
-                    for (int i = 1; i < split.Length -1; i++) //scrub EGD Pin
+                    for (int i = 0; i < split.Length -1; i++) //scrub EGD Pin
                     {
-                        if (i != remove + 1)
+                        if (i != remove)
                         {
                             string parity = "class=\"impair\" ";
                             if (j % 2 == 0)
