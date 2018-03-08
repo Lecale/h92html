@@ -10,8 +10,9 @@ namespace h92html
         {
             string tmp;
             Console.WriteLine("h92html expects a certain format for the .h9 file");
-            Console.WriteLine("so please ensure you have all column headers populated");
-            Console.WriteLine("Tell me where your h9 file is");
+            Console.WriteLine("It assumes you have an unmarked EGD pin column");
+            Console.WriteLine("and that the results start after ; Pl");
+            Console.WriteLine("So... Tell me where your h9 file is");
             string h9File = Console.ReadLine();
             string htmlFile = h9File.Replace(".txt",".html").Replace(".h9", ".html");
             Console.WriteLine("output will be at {0}",htmlFile);
@@ -67,16 +68,7 @@ namespace h92html
                 for (int i = 1; i < split.Length; i++)
                 {
                     if (i != remove) {
-                        sw.WriteLine("<th class=\"alone\">" + split[i] + "</th>");  //Ian likes this style better :p
-                        /*if (i < 4)
-                            sw.WriteLine("<th class=\"left\">" + split[i] + "</th>");
-                        else
-                        {
-                            if (i < split.Length - 1)
-                                sw.WriteLine("<th class=\"middle\">" + split[i] + "</th>");
-                            else
-                                sw.WriteLine("<th class=\"right\">" + split[i] + "</th>");
-                        }*/
+                        sw.WriteLine("<th class=\"alone\">" + split[i] + "</th>");  
                     }
                 }
                 sw.WriteLine("</tr>");
@@ -113,7 +105,15 @@ namespace h92html
                             }
                             else
                             {
-                                sw.WriteLine("<td " + parity + " align =\"center\">" + split[i] + "</td>");
+                                if (split[i].Contains("-"))
+                                {
+                                    parity = parity.Replace("pair", "pairM");
+                                    sw.WriteLine("<td " + parity + " align =\"center\">" + split[i] + "</td>");
+                                }
+                                else
+                                {
+                                    sw.WriteLine("<td " + parity + " align =\"center\">" + split[i] + "</td>");
+                                }
                             }
                         }
                     }
